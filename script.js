@@ -28,7 +28,7 @@ const data = {
   projects: [
     {
       id: "proj1",
-      name: "Project 1",
+      name: "AKSHAR",
       icon: "./icon.png",
       tags: ["Engineering", "AI"],
     },
@@ -155,15 +155,22 @@ for (let i = 0; i < TOTAL_STARS; i++) {
     y: getRandom(0, canvas.height),
     radius: getRandom(1, 2),
     color: getRandomColor(),
-    speed: getRandom(0.3, 2),
+    speed: getRandom(0.1, 0.2),
   });
 }
 
-// Function to draw and animate stars
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   stars.forEach(star => {
+    ctx.save();
+    
+    // Set up the glowing effect
+    ctx.shadowBlur = 5; // Adjust the blur amount for the glow effect
+    ctx.shadowColor = star.color; // Use the star's color for the glow
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = -2;
+
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
     ctx.fillStyle = star.color;
@@ -177,8 +184,11 @@ function drawStars() {
       star.x = getRandom(0, canvas.width);
       star.y = -star.radius;
     }
+
+    ctx.restore();
   });
 }
+
 
 // Draw function for stars and circles (combined)
 function draw() {
@@ -222,7 +232,7 @@ function draw() {
       ctx.font = "20px monospace";
       ctx.fillStyle = "#FFFFFF";
       ctx.textAlign = "center";
-      ctx.fillText(circles[i].name, RADIUS / 8, RADIUS + 25); // Positioning the text below the circle
+      ctx.fillText(circles[i].name, RADIUS / 12, RADIUS + 25); // Positioning the text below the circle
     }
 
     ctx.restore();
@@ -356,3 +366,4 @@ window.addEventListener("resize", () => {
 });
 
 draw();
+
