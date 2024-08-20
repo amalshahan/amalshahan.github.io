@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: none;
+}
+
+body{
+  background-color: #121212;
+}
+
+#canvas {
+  display: block;
+  z-index: 0;
+  cursor: grab;
+}
