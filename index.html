@@ -1,361 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
-:root {
-  --color-bg1: #fff
-  --color-bg2: rgb(0, 17, 32);
-  --color1: 18, 113, 255;
-  --color2: 107, 74, 255;
-  --color3: 100, 100, 255;
-  --color4: 50, 160, 220;
-  --color5: 80, 47, 122;
-  --color-interactive: 140, 100, 255;
-  --circle-size: 80%;
-  --blending: hard-light;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
 
+    body {
+      height: 100%;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #fbfaff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: "Rubik", sans-serif;
+    }
 
-* {
-  margin:0;
-  padding:0;
-  outline:none;
-  list-style:none;
-  text-decoration:none;
-  box-sizing:border-box;
-  color:#FFF;
-  background: transparent;
-  border:none;
-}
+    .navbar {
+      width: 70%;
+      max-width: 30rem;
+      background-color: #ffffff;
+      box-shadow: 0px 5px 15px 8px #e4e7fb;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      margin-top: 20px;
+    }
 
-html, body {
-  font-family: 'Dongle', sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
+    main {
+      width: 80%;
+      max-width: 60rem;
+      background-color: #ffffff;
+      box-shadow: 0px 5px 15px 8px #e4e7fb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      overflow: auto;
+    }
 
-body {
-  background: #FFF;
-  font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
-}
+    .header {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
 
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
+    .header h1 {
+      font-size: 2rem;
+      color: #141a39;
+      margin-bottom: 0.5rem;
+    }
 
-.card {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  user-select: none;
-  max-width: 600px;
-  padding: 48px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  box-shadow: 0 4px 90px rgba(0,0,0,0.1);
-  overflow: hidden;
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 34%, rgba(255,255,255,1) 89%, rgba(255,255,255,0) 100%);
-    opacity: 0.3;
-    filter: blur(.5px);
-    mix-blend-mode: hard-light;
-  }
+    .header p {
+      font-size: 1rem;
+      color: #707070;
+    }
 
+    .card-deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-  .noise {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    opacity: 0.1;
-  }
+    .card {
+      flex: 1 1 calc(25% - 1rem);
+      box-shadow: 0px 5px 15px 8px #e4e7fb;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center horizontally */
+      justify-content: center; /* Center vertically */
+    }
 
-  .content {
-    position: relative;
-    z-index: 2;
-    text-shadow: -3px 0px 2px rgba(0,0,0,0.1);
-  }
-}
+    .card img {
+      width: 120px; /* Adjusted size */
+      height: 120px; /* Adjusted size */
+      border-radius: 50%; /* Full circle */
+      border: 2px solid #ddd;
+      object-fit: cover;
+      margin-bottom: 0.3rem;
+    }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
+    .card-body {
+      padding: 0.5rem;
+    }
 
-p {
-  line-height: 1.6;
-}
+    .card-title {
+      font-size: 1.2rem;
+      color: #141a39;
+      margin-bottom: 0.5rem;
+    }
 
+    .card-subtitle {
+      font-size: 1rem;
+      color: #707070;
+    }
 
-@keyframes moveInCircle {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+    .about-section {
+      margin-top: 2rem;
+    }
 
-@keyframes moveVertical {
-  0% {
-    transform: translateY(-50%);
-  }
-  50% {
-    transform: translateY(50%);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
+    .about-section h2 {
+      font-size: 1.8rem;
+      color: #141a39;
+      margin-bottom: 1rem;
+      text-align: left; /* Align text to the left */
+    }
 
-@keyframes moveHorizontal {
-  0% {
-    transform: translateX(-50%) translateY(-10%);
-  }
-  50% {
-    transform: translateX(50%) translateY(10%);
-  }
-  100% {
-    transform: translateX(-50%) translateY(-10%);
-  }
-}
+    .about-section p {
+      font-size: 1rem;
+      color: #707070;
+      line-height: 1.6;
+      text-align: left; /* Align text to the left */
+    }
 
+    @media (max-width: 768px) {
+      .card-deck {
+        flex-direction: column;
+        align-items: center;
+      }
 
-.gradient-bg {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
-  top: 0;
-  left: 0;
+      .card {
+        flex: 1 1 100%;
+      }
+    }
 
-  .svgBlur {
-    display: none;
-  }
+    @media (max-width: 500px) {
+      .navbar {
+        width: 90%;
+      }
 
-  .noiseBg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    mix-blend-mode: soft-light;
-    opacity: 0.3;
-  }
-  .gradients-container {
-    filter: url(#goo) blur(40px) ;
-    width: 100%;
-    height: 100%;
-  }
+      .card {
+        flex: 1 1 100%;
+      }
 
-  .g1 {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
+      .header h1 {
+        font-size: 1.5rem;
+      }
 
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-
-    transform-origin: center center;
-    animation: moveVertical 30s ease infinite;
-
-    opacity: 1;
-  }
-
-  .g2 {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-
-    transform-origin: calc(50% - 400px);
-    animation: moveInCircle 20s reverse infinite;
-
-    opacity: 1;
-  }
-
-  .g3 {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2 + 200px);
-    left: calc(50% - var(--circle-size) / 2 - 500px);
-
-    transform-origin: calc(50% + 400px);
-    animation: moveInCircle 40s linear infinite;
-
-    opacity: 1;
-  }
-
-  .g4 {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-
-    transform-origin: calc(50% - 200px);
-    animation: moveHorizontal 40s ease infinite;
-
-    opacity: 0.7;
-  }
-
-  .g5 {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: calc(var(--circle-size) * 2);
-    height: calc(var(--circle-size) * 2);
-    top: calc(50% - var(--circle-size));
-    left: calc(50% - var(--circle-size));
-
-    transform-origin: calc(50% - 800px) calc(50% + 200px);
-    animation: moveInCircle 20s ease infinite;
-
-    opacity: 1;
-  }
-
-  .interactive {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: 100%;
-    height: 100%;
-    top: -50%;
-    left: -50%;
-
-    opacity: 0.7;
-  }
-}
-    </style>
+      .header p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <svg 
-             viewBox="0 0 100% 100%"
-             xmlns='http://www.w3.org/2000/svg'
-             class="noise"
-             >
-          <filter id='noiseFilter'>
-            <feTurbulence 
-                          type='fractalNoise' 
-                          baseFrequency='0.85' 
-                          numOctaves='6' 
-                          stitchTiles='stitch' />
-          </filter>
+  <!-- Navbar -->
+  <nav class="navbar navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">1mark</a>
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item" style="margin-right: 10px;padding-left: 30px;">
+          <button class="back-button" style="color: #000000; background: none; border: none; cursor: pointer;" onclick="history.back()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-arrow-left"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    
+    <!-- About Section -->
+    <div class="about-section">
+      <h2>About 1mark</h2>
+      <h5>🤔 Why 1Mark?</h5>
+<ul>
+  <li>As 5th-semester students, we’re tackling those tough core computer science subjects that really test our skills.</li>
+  <li><span style="font-weight: 590;">Let’s be honest: a lot of us (myself included) end up cramming just a day or night before the exams.</span></li>
+  <li>With limited time, it’s easy to skip a module or two, which can hurt our performance—especially on those tricky 3-mark questions.</li>
+  <li><span style="font-weight: 590;">Just one extra mark can make a huge difference in your grades:</span>
+    <ul>
+      <li>For example, moving from a B to an A.</li>
+      <li>Or even avoiding a supplementary exam by improving from an F to a D.</li>
+    </ul>
+  </li>
+  <li><strong>💡 So, I had an idea:</strong> <span style="font-weight: 590;">what if there was a quiz app that helps you quickly grasp the key points of a module—even just an hour before the exam? That way, you’d have something to write about in the exam!</span></li>
+</ul>
+
+
+      <h5>🤨 What is 1mark?</h5>
+      <ul>
+        <li>1mark is a <strong>simple multiple-choice quiz web application</strong>.</li>
+        <li>It will be <span style="font-weight: 590;">designed, developed, and used</span> by computer science students of GECK.</li>
+        <li>The main goal of this app is to improve academic performance through quick and effective revision.</li>
+     </ul>
       
-          <rect
-                width='100%'
-                height='100%'
-                preserveAspectRatio="xMidYMid meet"
-                filter='url(#noiseFilter)' />
-        </svg>
-        <div class="content">
-          <h1>IEEE</h1>
-          <p>IEEE is the ultimate IEEE of all things IEEE. In the world of IEEE, you can IEEE every IEEE that IEEE has ever IEEE’d. Here’s an IEEE for every IEEE you could IEEE.
-          </p>
+
+    
+      <h5>🧐 How does 1mark work?</h5>
+
+        <ul>
+          <li><span style="font-weight: 590;">Think of your exams as a game with two levels:</span> Part 1 is the “quick win” round with 10 short questions worth 3 marks each, and Part 2 is where the longer answers come into play.</li>
+          <li>If you nail the 10 questions in Part 1, you’re already got 30 marks mahhn!</li>
+          <li>The good news? The remaining 10 marks are within reach with just a bit of basic knowledge—giving you the confidence to ace the exam.</li>
+          <li>We’ve packed each quiz with 10 quick-fire questions that get straight to the point, helping you grab the key ideas fast.</li>
+          <li><span style="font-weight: 590;">These questions are crafted by expert teachers (who know all the frequently repeated 3-mark questions) or with the help of AI.</span> You’re getting the best of both worlds!</li>
+          <li>This strategy ensures that when you’re in the exam, you’ve got a solid foundation to build on—<span style="font-weight: 590;">because having some prep is always better than going in blind.</span></li>
+        </ul>
+
+        <h5>🛠️ How Am I Gonna Build This?</h5>
+        <ul>
+          <li>Honestly, I’m not entirely sure yet! <strong>BUT ,</strong></li>
+          <li>I’ve put together a fantastic team of managers—check them out below!</li>
+          <li>Anyone can pitch in to help build the 1Mark app, so feel free to get involved.</li>
+          <li><strong>This platform is all about giving a shoutout and celebrating everyone who helps make the 1Mark app amazing. Plus, there will be ✨awesome prizes✨ for the top contributors!</strong></li>
+        </ul>
+
+        <h5>🤝 How Can You Contribute to This?</h5>
+
+<p>Since this is a quiz app, you probably have a good sense of how it should work. Here’s how you can help:</p>
+
+<ul>
+  <li>You can help in two super cool ways:
+
+    <ul>
+      <li><span style="font-weight: 590;">1) App Flow:</span> Think of this as the map/blueprint of our app. You’ll design the wireframes, figuring out which button takes you where. Got ideas? Send them to Afra!</li>
+      <li><span style="font-weight: 590;">2) UI Design:</span> This is all about making our app look amazing—buttons, colors, fonts, backgrounds, and more. If you’ve got a flair for design, Neha’s the person to send your ideas to.</li>
+    </ul>
+  </li>
+
+  <li>Need inspiration? Check this out:
+    <ul>
+      <li><span style="font-weight: 590;">Check Out Other Webpages:</span>  Find inspiration from existing designs, take screenshots/links, and share them with the relevant team leader.</li>
+      <li><span style="font-weight: 590;">Code the Design:</span> Got a design idea? Help us bring it to life with some code.</li>
+      <li><span style="font-weight: 590;">AI-Generated Designs:</span> Use AI tools to create some cool designs and share them with us!</li>
+      <li><span style="font-weight: 590;">Share Your Suggestions:</span> > If you think a button or feature could be improved, suggest a change and let us know!</li>
+      <li><span style="font-weight: 590;">And More:</span>  If you have other creative ideas or contributions, feel free to share!</li>
+    </ul>
+  </li>
+
+</ul>
+
+<h5>🚀 Why Should You Jump In? </h5>
+
+<ul>
+  <li><strong>🔥 Boost Your Resume:</strong> Help us build this app and add some awesome experience to your resume.</li>
+  <li><strong>🔥 Level Up Academics:</strong> Improve academics.</li>
+  <li><strong>🔥 Get Noticed:</strong> Bindima Miss will be like "seniorsine kand padikkeda....." </li>
+</ul>
+
+
+        
+
+      
+    </div>
+
+    <div class="header">
+      <h1>About Us</h1>
+      <p>Meet the team behind the magic and learn more about our mission and vision.</p>
+    </div>
+
+    <!-- Team Cards -->
+    <div class="card-deck">
+      <div class="card">
+        <img src="./assets_1mark/34.jpg" alt="Team Member 1" />
+        <div class="card-body">
+          <h5 class="card-title">Sandra Alex</h5>
+          <h6 class="card-subtitle">Lead</h6>
         </div>
       </div>
-      <div class="gradient-bg">
-        <svg 
-             viewBox="0 0 100vw 100vw"
-             xmlns='http://www.w3.org/2000/svg'
-             class="noiseBg"
-             >
-          <filter id='noiseFilterBg'>
-            <feTurbulence 
-                          type='fractalNoise'
-                          baseFrequency='0.6'
-                          stitchTiles='stitch' />
-          </filter>
-      
-          <rect
-                width='100%'
-                height='100%'
-                preserveAspectRatio="xMidYMid meet"
-                filter='url(#noiseFilterBg)' />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-              <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-          </defs>
-        </svg>
-        <div class="gradients-container">
-          <div class="g1"></div>
-          <div class="g2"></div>
-          <div class="g3"></div>
-          <div class="g4"></div>
-          <div class="g5"></div>
-          <div class="interactive"></div>
+      <div class="card">
+        <img src="./assets_1mark/35.jpg" alt="Team Member 2" />
+        <div class="card-body">
+          <h5 class="card-title">Saleem Malik</h5>
+          <h6 class="card-subtitle">Co-Lead</h6>
         </div>
       </div>
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const interBubble = document.querySelector('.interactive');
-    let curX = 0;
-    let curY = 0;
-    let tgX = 0;
-    let tgY = 0;
+      <div class="card">
+        <img src="./assets_1mark/36.jpg" alt="Team Member 3" />
+        <div class="card-body">
+          <h5 class="card-title">Neha Mariyam</h5>
+          <h6 class="card-subtitle">Design Lead</h6>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./assets_1mark/38.jpg" alt="Team Member 4" />
+        <div class="card-body">
+          <h5 class="card-title">Afra Arakkal</h5>
+          <h6 class="card-subtitle">UX Lead</h6>
+        </div>
+      </div>
+      <p>Join us on our mission to improve academic performance and make exam preparation more manageable. Explore 1mark, test your knowledge, and experience how a single mark can make a big difference!</p>
 
-    const move = () => {
-        curX += (tgX - curX) / 20;
-        curY += (tgY - curY) / 20;
-        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-        requestAnimationFrame(move);
-    };
+    </div>
 
-    window.addEventListener('mousemove', (event) => {
-        tgX = event.clientX;
-        tgY = event.clientY;
-    });
-
-    move();
-});
-      </script>
+    
+  </main>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
