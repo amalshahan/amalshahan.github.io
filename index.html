@@ -53,7 +53,7 @@
         }
 
 
-        .noiseBg {
+        /* .noiseBg {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -62,7 +62,7 @@
             z-index: 1;
             mix-blend-mode: soft-light;
             opacity: 0.3;
-        }
+        } */
 
         .gradients-container {
             filter: url(#goo) blur(40px);
@@ -606,12 +606,12 @@
 <body>
     <!-- Background Animation -->
     <div class="gradient-bg">
-        <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+        <!-- <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
             <filter id="noiseFilterBg">
                 <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
             </filter>
             <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
-        </svg>
+        </svg> -->
         <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
             <defs>
                 <filter id="goo">
