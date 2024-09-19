@@ -1,323 +1,847 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IEEE Student Branch</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-    }
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    body {
-      height: 100%;
-      width: 100%;
-      min-height: 100vh;
-      background-color: #fbfaff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: "Rubik", sans-serif;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
 
-    .navbar {
-      width: 70%;
-      max-width: 30rem;
-      background-color: #ffffff;
-      box-shadow: 0px 5px 15px 8px #e4e7fb;
-      border-radius: 0.5rem;
-      margin-bottom: 2rem;
-      margin-top: 20px;
-    }
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    main {
-      width: 80%;
-      max-width: 60rem;
-      background-color: #ffffff;
-      box-shadow: 0px 5px 15px 8px #e4e7fb;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      overflow: auto;
-    }
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
 
-    .header {
-      text-align: left;
-      margin-bottom: 2rem;
-    }
+        /* Background Styles */
+        :root {
+            --color-bg1: #000 --color-bg2: rgb(0, 17, 32);
+            --color1: 18, 113, 255;
+            --color2: 107, 74, 255;
+            --color3: 100, 100, 255;
+            --color4: 50, 160, 220;
+            --color5: 80, 47, 122;
+            --color-interactive: 140, 100, 255;
+            --circle-size: 80%;
+            --blending: hard-light;
+        }
 
-    .header h1 {
-      font-size: 2rem;
-      color: #141a39;
-      margin-bottom: 0.5rem;
-    }
+        .gradient-bg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+            z-index: -1;
+            /* Make sure it stays behind content */
+        }
 
-    .header p {
-      font-size: 1rem;
-      color: #707070;
-    }
+        .noiseBg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            mix-blend-mode: soft-light;
+            opacity: 0.3;
+        }
 
-    .card-deck {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+        .gradients-container {
+            filter: url(#goo) blur(40px);
+            width: 100%;
+            height: 100%;
+        }
 
-    .card {
-      flex: 1 1 calc(25% - 1rem);
-      box-shadow: 0px 5px 15px 8px #e4e7fb;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      background-color: #ffffff;
-      text-align: center;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center horizontally */
-      justify-content: center; /* Center vertically */
-    }
+        .g1,
+        .g2,
+        .g3,
+        .g4,
+        .g5,
+        .interactive {
+            position: absolute;
+            mix-blend-mode: var(--blending);
+            width: var(--circle-size);
+            height: var(--circle-size);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
 
-    .card img {
-      width: 120px; /* Adjusted size */
-      height: 120px; /* Adjusted size */
-      border-radius: 50%; /* Full circle */
-      border: 2px solid #ddd;
-      object-fit: cover;
-      margin-bottom: 0.3rem;
-    }
+        .g1 {
+            background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%);
+            top: calc(50% - var(--circle-size) / 2);
+            left: calc(50% - var(--circle-size) / 2);
+            animation: moveVertical 30s ease infinite;
+        }
 
-    .card-body {
-      padding: 0.5rem;
-    }
+        .g2 {
+            background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%);
+            transform-origin: calc(50% - 400px);
+            animation: moveInCircle 20s reverse infinite;
+        }
 
-    .card-title {
-      font-size: 1.2rem;
-      color: #141a39;
-      margin-bottom: 0.5rem;
-    }
+        .g3 {
+            background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%);
+            top: calc(50% - var(--circle-size) / 2 + 200px);
+            left: calc(50% - var(--circle-size) / 2 - 500px);
+            animation: moveInCircle 40s linear infinite;
+        }
 
-    .card-subtitle {
-      font-size: 1rem;
-      color: #707070;
-    }
+        .g4 {
+            background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%);
+            animation: moveHorizontal 40s ease infinite;
+        }
 
-    .about-section {
-      margin-top: 2rem;
-    }
+        .g5 {
+            background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%);
+            width: calc(var(--circle-size) * 2);
+            height: calc(var(--circle-size) * 2);
+            transform-origin: calc(50% - 800px) calc(50% + 200px);
+            animation: moveInCircle 20s ease infinite;
+        }
 
-    .about-section h2 {
-      font-size: 1.8rem;
-      color: #141a39;
-      margin-bottom: 1rem;
-      text-align: left; /* Align text to the left */
-    }
+        .interactive {
+            background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%);
+            width: 100%;
+            height: 100%;
+            top: -50%;
+            left: -50%;
+            opacity: 0.7;
+        }
 
-    .about-section p {
-      font-size: 1rem;
-      color: #707070;
-      line-height: 1.6;
-      text-align: left; /* Align text to the left */
-    }
+        @keyframes moveInCircle {
+            0% {
+                transform: rotate(0deg);
+            }
 
-    @media (max-width: 768px) {
-      .card-deck {
-        flex-direction: column;
-        align-items: center;
-      }
+            50% {
+                transform: rotate(180deg);
+            }
 
-      .card {
-        flex: 1 1 100%;
-      }
-    }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-    @media (max-width: 500px) {
-      .navbar {
-        width: 90%;
-      }
+        @keyframes moveVertical {
+            0% {
+                transform: translateY(-50%);
+            }
 
-      .card {
-        flex: 1 1 100%;
-      }
+            50% {
+                transform: translateY(50%);
+            }
 
-      .header h1 {
-        font-size: 1.5rem;
-      }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
 
-      .header p {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">1mark</a>
-      <ul class="navbar-nav d-flex flex-row">
-        <li class="nav-item" style="margin-right: 10px;padding-left: 30px;">
-          <button class="back-button" style="color: #000000; background: none; border: none; cursor: pointer;" onclick="history.back()">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-arrow-left"
-            >
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </button>
-        </li>
-      </ul>
-    </div>
-  </nav>
+        @keyframes moveHorizontal {
+            0% {
+                transform: translateX(-50%) translateY(-10%);
+            }
 
-  <main>
-    
-    <!-- About Section -->
-    <div class="about-section">
-      <h2>About 1mark</h2>
-      <h5>🤔 Why 1Mark?</h5>
-<ul>
-        <li>As 5th-semester students, we're diving into core computer science subjects that are more challenging.</li>
-        <li><span style="font-weight: 590;">We all know the reality: many of us (myself included) study just a day or night before exams.</span></li>
-        <li>Due to time constraints, we often skip one or two modules, which impacts our overall performance—especially with 3-mark questions.</li>
-  <li><span style="font-weight: 590;">Just one extra mark can make a huge difference in your grades:</span>
-    <ul>
-      <li>For example, moving from a B to an A.</li>
-      <li>Or even avoiding a supplementary exam by improving from an F to a D.</li>
-    </ul>
-  </li>
-  <li><strong>💡 So, I had an idea:</strong> <span style="font-weight: 590;">what if there was a quiz app that helps you quickly grasp the key points of a module—even just an hour before the exam? That way, you’d have something to write about in the exam!</span></li>
-</ul>
+            50% {
+                transform: translateX(50%) translateY(10%);
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(-10%);
+            }
+        }
+
+        /* Existing Page Styles */
+        /* Navbar */
+        /* Glassmorphic Navbar */
+        /* Glassmorphic Effect */
+        .glassmorphic {
+            background: rgba(255, 255, 255, 0.1);
+            /* Slightly transparent background */
+            backdrop-filter: blur(10px);
+            /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Light border to enhance glass effect */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for depth */
+            border-radius: 15px;
+            /* Rounded corners */
+            padding: 10px 20px;
+            /* Add some padding */
+            max-width: 900px;
+            /* Adjust max-width to make navbar shorter */
+            margin: 0 auto;
+            margin-top: 10px;
+
+        }
+
+        /* Container Width and Centering */
+        .container {
+            max-width: 900px;
+            /* Adjust max-width to make navbar shorter */
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            border-radius: 15px;
+            /* Rounded corners */
+        }
+
+        /* Navbar Brand */
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: #0a0a0a;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        .navbar-brand:hover {
+            color: #1d62ab;
+        }
+
+        /* Navbar Links */
+        .nav-link {
+            font-size: 1rem;
+            color: #020202;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+
+        /* Navbar Toggler */
+        .navbar-toggler {
+            border: none;
+            /* Remove border for cleaner look */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16' /%3E%3C/svg%3E");
+            /* Change the color of the toggler icon */
+        }
+
+        /* Navbar Collapse */
+        .collapse {
+            flex-grow: 0;
+            /* Adjust the space of the collapse area */
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            /* Align links to the right */
+        }
 
 
-      <h5>🤨 What is 1mark?</h5>
-      <ul>
-        <li>1mark is a <strong>simple multiple-choice quiz web application</strong>.</li>
-        <li>It will be <span style="font-weight: 590;">designed, developed, and used</span> by computer science students of GECK.</li>
-        <li>The main goal of this app is to improve academic performance through quick and effective revision.</li>
-     </ul>
-      
+        /* Header */
+        header {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
 
-    
-      <h5>🧐 How does 1mark work?</h5>
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
 
-        <ul>
-          <li><span style="font-weight: 590;">Think of your exams as a game with two levels:</span> Part 1 is the “quick win” round with 10 short questions worth 3 marks each, and Part 2 is where the longer answers come into play.</li>
-          <li>If you nail the 10 questions in Part 1, you’re already got 30 marks mahhn!</li>
-          <li>The good news? The remaining 10 marks are within reach with just a bit of basic knowledge—giving you the confidence to ace the exam.</li>
-          <li>We’ll stuff each quiz with 10 rapid-fire questions that cut to the chase, so you can grab the essential ideas in no time!</li>
-          <li><span style="font-weight: 590;">These questions are crafted by expert teachers (who know all the frequently repeated 3-mark questions) or with the help of AI.</span> You’re getting the best of both worlds!</li>
-          <li>This strategy ensures that when you’re in the exam, you’ve got a solid foundation to build on—<span style="font-weight: 590;">because having some prep is always better than going in blind.</span></li>
-        </ul>
+        header p {
+            font-size: 1.5rem;
+            color: #f0eeee;
+        }
 
-        <h5>🛠️ How Am I Gonna Build This?</h5>
-        <ul>
-          <li>Honestly, I’m not entirely sure yet! <strong>BUT ,</strong></li>
-          <li>I’ve put together a fantastic team of managers—check them out below!</li>
-          <li>Anyone can pitch in to help build the 1Mark app, so feel free to get involved.</li>
-          <li><strong>This platform is all about giving a shoutout and celebrating everyone who helps make the 1Mark app amazing. Plus, there will be ✨awesome prizes✨ for the top contributors!</strong></li>
-        </ul>
+        .home_p {
+            -webkit-text-size-adjust: 100%;
+            tab-size: 4;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            --subheading: #666;
+            line-height: inherit;
+            font-family: __Raleway_28057e, __Raleway_Fallback_28057e;
+            font-style: normal;
+            box-sizing: border-box;
+            border: 0 solid #e5e7eb;
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgba(59, 130, 246, .5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            width: min(80vw, 647px);
+            text-align: center;
+            font-weight: 200;
+            --tw-text-opacity: 1;
+            color: rgb(102 102 102/var(--tw-text-opacity));
 
-        <h5>🤝 How Can You Contribute to This?</h5>
+        }
 
-<p>Since this is a quiz app, you probably have a good sense of how it should work. Here’s how you can help:</p>
+        .main_head {
+            -webkit-text-size-adjust: 100%;
+            tab-size: 2;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            --subheading: #666;
+            font-family: __Raleway_28057e, __Raleway_Fallback_28057e;
+            font-style: normal;
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: 500;
+            box-sizing: border-box;
+            border: 0 solid #e5e7eb;
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgba(59, 130, 246, .5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            fill: #000;
+            stroke: #000;
+            stroke-width: 4;
+            stroke-linejoin: miter;
+            paint-order: stroke;
+        }
 
-<ul>
-  <li>You can help in two super cool ways:
+        header .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+        }
 
-    <ul>
-      <li><span style="font-weight: 590;">1) App Flow:</span> Think of this as the map/blueprint of our app. You’ll design the wireframes, figuring out which button takes you where. Got ideas? Send them to Afra!</li>
-      <li><span style="font-weight: 590;">2) UI Design:</span> This is all about making our app look amazing—buttons, colors, fonts, backgrounds, and more. If you’ve got a flair for design, Neha’s the person to send your ideas to.</li>
-    </ul>
-  </li>
+        /* Sections */
+        .section-padding {
+            padding: 60px 0;
+            position: relative;
+            background: transparent;
+            /* Ensure background is transparent to show animation */
+            z-index: 2;
+        }
 
-  <li>Need inspiration? Check this out:
-    <ul>
-      <li><span style="font-weight: 590;">Check Out Other Webpages:</span>  Find inspiration from existing designs, take screenshots/links, and share them with the relevant team leader.</li>
-      <li><span style="font-weight: 590;">Code the Design:</span> Got a design idea? Help us bring it to life with some code.</li>
-      <li><span style="font-weight: 590;">AI-Generated Designs:</span> Use AI tools to create some cool designs and share them with us!</li>
-      <li><span style="font-weight: 590;">Share Your Suggestions:</span> > If you think a button or feature could be improved, suggest a change and let us know!</li>
-      <li><span style="font-weight: 590;">And More:</span>  If you have other creative ideas or contributions, feel free to share!</li>
-    </ul>
-  </li>
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
 
-</ul>
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
 
-<h5>🚀 Why Should You Jump In? </h5>
+        .icon-box i {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
 
-<ul>
-  <li><strong>🔥 Boost Your Resume:</strong> Help us build this app and add some awesome experience to your resume.</li>
-  <li><strong>🔥 Level Up Academics:</strong> Improve academics.</li>
-  <li><strong>🔥 Get Noticed:</strong> Bindima Miss will be like "seniorsine kand padikkeda....." </li>
-</ul>
+        .icon-box h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Contact Form */
+        input,
+        textarea {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag-scroller {
+            display: grid;
+            gap: 1.5rem;
+            mask: linear-gradient(90deg, #0000, #F5F5F5 15%, #F5F5F5 85%, #0000);
+            overflow: hidden;
+        }
+
+        .tag-list {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tag-list li {
+            font-family: system-ui;
+            font-size: 1.125rem;
+            line-height: 1;
+            padding: 0.625rem 1.375rem;
+            border: 2px solid #252A2E;
+            border-radius: 10ch;
+            white-space: nowrap;
+        }
+
+        .tag-scroller.scrolling .tag-list {
+            width: max-content;
+            flex-wrap: nowrap;
+            animation: horizontal-scroll var(--duration) normal linear infinite;
+        }
+
+        @keyframes horizontal-scroll {
+            to {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
+        }
+
+        /* Handle reduced motion settings */
+        @media (prefers-reduced-motion) {
+            .tag-list {
+                flex-flow: row nowrap;
+                overflow: auto;
+            }
+        }
+
 
 
         
+/* ==============footerstart============================================================= */
 
-      
+        /* Glassmorphic Footer */
+        .glassmorphic-footer {
+            background: rgba(255, 255, 255, 0.1);
+            /* Slightly transparent background */
+            backdrop-filter: blur(10px);
+            /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Light border to enhance glass effect */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for depth */
+            border-radius: 15px;
+            /* Rounded corners */
+            padding: 1rem;
+            /* Padding */
+            margin: 0 auto;
+            /* Center the footer */
+            max-width: 900px;
+            /* Adjust max-width to match your design */
+            margin-bottom: 10px;
+        }
+
+        /* Footer Text Styling */
+        .glassmorphic-footer p {
+            margin: 0;
+            /* Remove default margin */
+            color: #000000;
+            /* White text color for contrast */
+            font-family: 'Poppins', sans-serif;
+            /* Custom font */
+            font-size: 1rem;
+            /* Font size */
+
+        }
+/* ==============footerend ============================================================= */
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="gradient-bg">
+        <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+            <filter id="noiseFilterBg">
+                <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                        result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
+            <div class="interactive"></div>
+        </div>
     </div>
 
-    <div class="header">
-      <h1>About Us</h1>
-      <p>Meet the team behind the magic and learn more about our mission and vision.</p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top glassmorphic">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <img src="./ieee_logo.png"
+                    alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAFtraL_OCfQp_91CwHUYrMho9jMkeVqFfGw&s"
+                    height="35px" width="35px" style="text-align: center;padding-bottom: 3px;">
+                <span style="margin-left: 4px;font-size: 3.5vh; text-align: center;">IEEE</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#why-ieee">Why IEEE?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#join-ieee">Join IEEE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#execom">Execom</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <header id="home" class="d-flex align-items-center text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold text-dark main_head">IEEE GECK SB</h1>
+            <p class="lead text-muted home_p">IEEE Student Branch Government Engineering College Kozhikode,
+                active since the 2012, has opened a world of opportunities, to each and everyone who aspires to learn
+                and
+                evolve.</p>
+            <!-- <a href="#join-ieee" class="btn btn-outline-primary btn-lg">Join Us Today</a> -->
+        </div>
+    </header>
+
+    <div class="tag-scrollers d-flex align-items-center text-center">
+        <div class="tag-scroller">
+            <ul class="tag-list">
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+                <li>Computer Society</li>
+                <li>Power & Energy Society</li>
+                <li>Robotics & Automation Society</li>
+                <li>Women in Engineering Society</li>
+                <li>Electronics Society</li>
+            </ul>
+        </div>
     </div>
 
-    <!-- Team Cards -->
-    <div class="card-deck">
-      <div class="card">
-        <img src="./assets_1mark/34.jpg" alt="Team Member 1" />
-        <div class="card-body">
-          <h5 class="card-title">Sandra Alex</h5>
-          <h6 class="card-subtitle">Lead</h6>
+    <!-- Why IEEE Section -->
+    <section id="why-ieee" class="section-padding text-center">
+        <div class="container">
+            <h2 class="section-title">Why IEEE?</h2>
+            <p class="section-description text-muted">IEEE offers an unparalleled opportunity for professional growth,
+                networking, and contributing to cutting-edge projects.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-network-wired fa-3x text-primary mb-3"></i>
+                        <h5>Global Network</h5>
+                        <p>Connect with professionals and students from over 160 countries.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+                        <h5>Career Advancement</h5>
+                        <p>Access career development resources and mentorship programs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">
+                        <i class="fas fa-lightbulb fa-3x text-primary mb-3"></i>
+                        <h5>Innovation Hub</h5>
+                        <p>Be part of innovative projects and shape the future of technology.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <img src="./assets_1mark/35.jpg" alt="Team Member 2" />
-        <div class="card-body">
-          <h5 class="card-title">Saleem Malik</h5>
-          <h6 class="card-subtitle">Co-Lead</h6>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets_1mark/36.jpg" alt="Team Member 3" />
-        <div class="card-body">
-          <h5 class="card-title">Neha Mariyam</h5>
-          <h6 class="card-subtitle">Design Lead</h6>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets_1mark/38.jpg" alt="Team Member 4" />
-        <div class="card-body">
-          <h5 class="card-title">Afra Arakkal</h5>
-          <h6 class="card-subtitle">UX Lead</h6>
-        </div>
-      </div>
-      <p>Join us on our mission to improve academic performance and make exam preparation more manageable. Explore 1mark, test your knowledge, and experience how a single mark can make a big difference!</p>
+    </section>
 
-    </div>
+    <!-- Join IEEE Section -->
+    <section id="join-ieee" class="section-padding text-center">
+        <div class="container">
+            <h2 class="section-title">Join IEEE</h2>
+            <p class="section-description">Join the world’s largest technical professional organization today and make a
+                difference!</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Become a Member</a>
+        </div>
+    </section>
 
-    
-  </main>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Execom Section -->
+    <section id="execom" class="section-padding text-center">
+        <div class="container">
+            <h2 class="section-title">Our Executive Committee</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Chairperson">
+                        <div class="card-body">
+                            <h5 class="card-title">Chairperson</h5>
+                            <p class="card-text text-muted">Leading the branch towards greater innovation and growth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Secretary">
+                        <div class="card-body">
+                            <h5 class="card-title">Secretary</h5>
+                            <p class="card-text text-muted">Ensuring smooth operations and effective communication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Treasurer">
+                        <div class="card-body">
+                            <h5 class="card-title">Treasurer</h5>
+                            <p class="card-text text-muted">Managing the financial growth of the student branch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="glassmorphic-contact section-padding text-center">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-description text-muted">We'd love to hear from you! Reach out to us for any inquiries or
+                collaborations.</p>
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control form-control-lg" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control form-control-lg" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control form-control-lg" rows="4" placeholder="Your Message"
+                        required></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="glassmorphic-footer text-center py-3">
+        <p>© 2024 IEEE Student Branch. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Interactive Background Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const interBubble = document.querySelector('.interactive');
+            let curX = 0;
+            let curY = 0;
+            let tgX = 0;
+            let tgY = 0;
+
+            const move = () => {
+                curX += (tgX - curX) / 20;
+                curY += (tgY - curY) / 20;
+                interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+                requestAnimationFrame(move);
+            };
+
+            window.addEventListener('mousemove', (event) => {
+                tgX = event.clientX;
+                tgY = event.clientY;
+            });
+
+            move();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+            if (mediaQuery && !mediaQuery.matches) {
+                const tagScroller = document.querySelector(".tag-scroller");
+                const allTags = tagScroller.querySelectorAll("li");
+
+                function createElement(tagName, className = "") {
+                    const elem = document.createElement(tagName);
+                    elem.className = className;
+                    return elem;
+                }
+
+                function scrollersFrom(elements, numColumns = 2) {
+                    const fragment = new DocumentFragment();
+                    elements.forEach((element, i) => {
+                        const column = i % numColumns;
+                        const children = fragment.children;
+                        if (!children[column]) fragment.appendChild(createElement("ul", "tag-list"));
+                        children[column].appendChild(element);
+                    });
+                    return fragment;
+                }
+
+                const scrollers = scrollersFrom(allTags, 2);
+                tagScroller.innerHTML = "";
+                tagScroller.appendChild(scrollers);
+                addScrolling();
+
+                function addScrolling() {
+                    tagScroller.classList.add("scrolling");
+                    document.querySelectorAll(".tag-list").forEach((tagList) => {
+                        const scrollContent = Array.from(tagList.children);
+                        scrollContent.forEach((listItem) => {
+                            const clonedItem = listItem.cloneNode(true);
+                            clonedItem.setAttribute("aria-hidden", true);
+                            tagList.appendChild(clonedItem);
+                        });
+                        tagList.style.setProperty("--duration", (tagList.clientWidth / 100) + "s");
+                    });
+                }
+            }
+        });
+
+    </script>
 </body>
+
 </html>
