@@ -17,17 +17,20 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
 
+    <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/infinite_scroller.css">
     <link rel="stylesheet" href="./css/execom.css">
     <link rel="stylesheet" href="./css/gallery.css">
     <link rel="stylesheet" href="./css/last_info.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/pricing.css">
 
 </head>
 
@@ -77,14 +80,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#why-ieee">Why IEEE?</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#join-ieee">Join IEEE</a>
+                        <a class="nav-link" href="#join-ieee">Join</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#execom">Execom</a>
+                    </li>
+
+                    <li class="nav-item"></li>
+                    <a class="nav-link" href="#gallery">Gallery</a>
                     </li>
 
                     <li class="nav-item">
@@ -100,7 +107,9 @@
         <div class="container">
             <h1 class="display-5 fw-bold text-dark main_head">IEEE GECK SB</h1>
             <p class="lead text-muted home_p">
-                Since 2012, the IEEE Student Branch at Government Engineering College Kozhikode has been a gateway to countless opportunities for those eager to learn and grow. Here, we’re not just building skills; we’re nurturing dreams and creating a community where every aspiration is valued and supported.
+                Since 2012, the IEEE Student Branch at Government Engineering College Kozhikode has been a gateway to
+                countless opportunities for those eager to learn and grow. Here, we’re not just building skills; we’re
+                nurturing dreams and creating a community where every aspiration is valued and supported.
 
             </p>
             <!-- <a href="#join-ieee" class="btn btn-outline-primary btn-lg">Join Us Today</a> -->
@@ -145,7 +154,7 @@
     </div>
 
     <!-- Why IEEE Section -->
-    <section id="why-ieee" class="section-padding text-center">
+    <!-- <section id="why-ieee" class="section-padding text-center">
         <div class="container">
             <h2 class="section-title">Why IEEE?</h2>
             <p class="section-description text-muted">IEEE offers an unparalleled opportunity for professional growth,
@@ -174,16 +183,50 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>  -->
 
     <!-- Join IEEE Section -->
-    <section id="join-ieee" class="section-padding text-center">
-        <div class="container">
-            <h2 class="section-title">Join IEEE</h2>
-            <p class="section-description">Join the world’s largest technical professional organization today and make a
-                difference!</p>
-            <a href="#contact" class="btn btn-primary btn-lg">Become a Member</a>
-        </div>
+    <section class="pricing" id="join-ieee">
+        <main class="main flow">
+            <h1 class="main__heading">Join Us</h1>
+            <div class="main__cards cards">
+                <div class="cards__inner">
+                    <div class="cards__card card">
+                        <h2 class="card__heading">IEEE + CS</h2>
+                        <p class="card__price">₹1780</p>
+                        <ul role="list" class="card__bullets flow">
+                            <li>Coding workshops.</li>
+                            <li>Computer science resources.</li>
+                            <li>Industry exposure.</li>
+
+                        </ul>
+                        <a href="#basic" class="card__cta cta">Upgrade to CS</a>
+                    </div>
+
+                    <div class="cards__card card">
+                        <h2 class="card__heading">IEEE</h2>
+                        <p class="card__price">₹1380</p>
+                        <ul role="list" class="card__bullets flow">
+                            <li>Access research papers.</li>
+                            <li>Conference and workshop discounts.</li>
+                            <li>Professional networking.</li>
+                        </ul>
+                        <a href="#pro" class="card__cta cta">Get Started</a>
+                    </div>
+
+                    <div class="cards__card card">
+                        <h2 class="card__heading">IEEE + RAS</h2>
+                        <p class="card__price">₹1880</p>
+                        <ul role="list" class="card__bullets flow">
+                            <li>Industry mentorship.</li>
+                            <li>Robotics journals and conferences.</li>
+                            <li>Hands-on workshops.</li>
+                        </ul>
+                        <a href="#ultimate" class="card__cta cta">Upgrade to RAS</a>
+                    </div>
+                </div>
+            </div>
+        </main>
     </section>
 
     <!-- Execom Section -->
@@ -345,8 +388,8 @@
 
 
 
-    <section class="gallery">
-        <h2 class="section-title">Gallery</h2>
+    <section class="gallery" id="gallery">
+        <h2 class="section-title" style="text-align: center;">Gallery</h2>
         <div class="grid">
             <div class="item">
                 <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop="
@@ -411,7 +454,7 @@
 
     <!-- Contact Section -->
     <!-- Last Info Section -->
-    <section class="last-info">
+    <section class="last-info" id="contact">
         <div class="container">
             <!-- Section 1: IEEE GECK -->
             <div class="footer-widget">
@@ -449,67 +492,71 @@
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
-
             <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
         </div>
     </section>
 
-<!-- Footer -->
-<footer class="glassmorphic-footer text-center py-3">
-    <p>© 2024 IEEE Student Branch. All Rights Reserved.</p>
-    <p>made with  <span style="color: rgb(91, 44, 219);">
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="inline-block text-lg font-bold text-[#ea5555] my-1.5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9z"></path>
-        </svg> </span>by Saleem Malik
-    </p>
-</footer>
+    <!-- Footer -->
+    <footer class="glassmorphic-footer text-center py-3">
+        <p>© 2024 IEEE SB GECK. All Rights Reserved.</p>
+        <p>Made with <span style="color: rgb(91, 44, 219);">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
+                    class="inline-block text-lg font-bold text-[#ea5555] my-1.5" height="1em" width="1em"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9z">
+                    </path>
+                </svg> </span>by <a href="https://www.linkedin.com/in/saleem-malik-pv" target="_blank"
+                rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Saleem Malik</a>
 
 
 
-    <!-- ============================================================================================================================================ -->
 
-    <script src="./js/slider.js"></script>
-    <script src="./js/interactive_bg.js"></script> <!-- Interactive Background Script -->
-    <script src="./js/infinite_horizontal_scroller.js"></script>
+            <!-- ============================================================================================================================================ -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+            <script src="./js/slider.js"></script>
+            <script src="./js/interactive_bg.js"></script> <!-- Interactive Background Script -->
+            <script src="./js/infinite_horizontal_scroller.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script>
-        $(document).ready(function () {
-            $('.execom-section .slider-container').slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1000,
-                arrows: true,
-                prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
-                nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    },
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 2
-                        }
-                    }
-                ]
-            });
-        });
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap JS -->
+            <script>
+                $(document).ready(function () {
+                    $('.execom-section .slider-container').slick({
+                        infinite: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 1000,
+                        arrows: true,
+                        prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+                        nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>',
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            },
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            }
+                        ]
+                    });
+                });
 
 
-    </script>
+            </script>
 </body>
 
 </html>

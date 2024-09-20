@@ -1,3 +1,10 @@
+.execom-section {
+    scroll-margin-top: 80px;
+    /* Adjust this value based on your navbar height */
+    font-family: "League Spartan", system-ui, sans-serif;
+
+}
+
 .execom-section .slider-container {
     max-width: 1025px;
     margin: 50px auto;
@@ -7,13 +14,15 @@
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 20px;
-    width: 200px; /* Increased width */
+    width: 200px;
+    /* Increased width */
     height: 400px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(124, 123, 123, 0.18);
     text-align: center;
     transition: transform 0.3s ease;
-    margin: 0 10px; /* Even margin on left and right */
+    margin: 0 10px;
+    /* Even margin on left and right */
     flex-shrink: 0;
 }
 
@@ -61,31 +70,40 @@
 .execom-section .slider-container {
     max-width: 1025px;
     margin: 50px auto;
-    display: flex; /* Use Flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping of cards */
-    justify-content: center; /* Center cards */
+    display: flex;
+    /* Use Flexbox for layout */
+    flex-wrap: wrap;
+    /* Allow wrapping of cards */
+    justify-content: center;
+    /* Center cards */
 }
 
 .execom-section .card {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 20px;
-    width: 250px; /* Default width for larger screens */
+    width: 250px;
+    /* Default width for larger screens */
     height: 400px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(124, 123, 123, 0.18);
     text-align: center;
     transition: transform 0.3s ease;
-    margin: 10px; /* Space between cards */
+    margin: 10px;
+    /* Space between cards */
     flex-shrink: 0;
-    box-sizing: border-box; /* Include padding and border in width */
+    box-sizing: border-box;
+    /* Include padding and border in width */
 }
 
 @media (max-width: 768px) {
     .execom-section .card {
-        width: calc(90% - 100px); /* Reduced width for mobile, leaving some margin */
-        height: auto; /* Adjust height automatically */
-        margin: 10px auto; /* Center the card with margin */
+        width: calc(90% - 100px);
+        /* Reduced width for mobile, leaving some margin */
+        height: auto;
+        /* Adjust height automatically */
+        margin: 10px auto;
+        /* Center the card with margin */
     }
 }
 
@@ -100,20 +118,30 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: #fff;
-    font-size: 0; /* Hides text */
-    position: absolute; /* Absolute positioning */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
-    display: flex; /* Flexbox for centering */
-    align-items: center; /* Center icon vertically */
-    justify-content: center; /* Center icon horizontally */
-    z-index: 2; /* Ensure buttons are above cards */
+    font-size: 0;
+    /* Hides text */
+    position: absolute;
+    /* Absolute positioning */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(-50%);
+    /* Center vertically */
+    display: flex;
+    /* Flexbox for centering */
+    align-items: center;
+    /* Center icon vertically */
+    justify-content: center;
+    /* Center icon horizontally */
+    z-index: 2;
+    /* Ensure buttons are above cards */
 }
 
 .execom-section .slick-prev {
-    left: -50px; /* Adjust to position the button */
+    left: -50px;
+    /* Adjust to position the button */
 }
 
 .execom-section .slick-next {
-    right: -50px; /* Adjust to position the button */
+    right: -50px;
+    /* Adjust to position the button */
 }

@@ -1,0 +1,44 @@
+.tag-scroller {
+    display: grid;
+    gap: 1.5rem;
+    mask: linear-gradient(90deg, #0000, #F5F5F5 15%, #F5F5F5 85%, #0000);
+    overflow: hidden;
+}
+
+.tag-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tag-list li {
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1;
+    padding: 0.625rem 1.375rem;
+    border: 2px solid #252A2E;
+    border-radius: 10ch;
+    white-space: nowrap;
+}
+
+.tag-scroller.scrolling .tag-list {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: horizontal-scroll var(--duration) normal linear infinite;
+}
+
+@keyframes horizontal-scroll {
+    to {
+        transform: translateX(calc(-50% - 0.75rem));
+    }
+}
+
+/* Handle reduced motion settings */
+@media (prefers-reduced-motion) {
+    .tag-list {
+        flex-flow: row nowrap;
+        overflow: auto;
+    }
+}

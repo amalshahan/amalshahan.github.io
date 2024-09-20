@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Arvo");
+/* @import url("https://fonts.googleapis.com/css?family=Arvo"); */
 
 
 .gallery {
@@ -7,6 +7,9 @@
     max-width: 1027px;
     margin: 0 auto;
     /* Center the gallery */
+    scroll-margin-top: 80px;
+    /* Adjust this value based on your navbar height */
+    font-family: "League Spartan", system-ui, sans-serif;
 }
 
 
