@@ -1,0 +1,37 @@
+/* ==============footerstart============================================================= */
+
+/* Glassmorphic Footer */
+.glassmorphic-footer {
+    background: rgba(255, 255, 255, 0.1);
+    /* Slightly transparent background */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Light border to enhance glass effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    border-radius: 15px;
+    /* Rounded corners */
+    padding: 1rem;
+    /* Padding */
+    margin: 0 auto;
+    /* Center the footer */
+    max-width: 900px;
+    /* Adjust max-width to match your design */
+    margin-bottom: 10px;
+}
+
+/* Footer Text Styling */
+.glassmorphic-footer p {
+    margin: 0;
+    /* Remove default margin */
+    color: #000000;
+    /* White text color for contrast */
+    font-family: 'Poppins', sans-serif;
+    /* Custom font */
+    font-size: 1rem;
+    /* Font size */
+
+}
+
+/* ==============footerend ============================================================= */

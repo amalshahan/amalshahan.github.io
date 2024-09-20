@@ -1,0 +1,119 @@
+.execom-section .slider-container {
+    max-width: 1025px;
+    margin: 50px auto;
+}
+
+.execom-section .card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    width: 200px; /* Increased width */
+    height: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(124, 123, 123, 0.18);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 0 10px; /* Even margin on left and right */
+    flex-shrink: 0;
+}
+
+.execom-section .card-photo img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.execom-section .card-info {
+    margin-top: 15px;
+}
+
+.execom-section .name {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.execom-section .designation {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.execom-section .social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.execom-section .social-icons a svg {
+    width: 30px;
+    height: 30px;
+    fill: #000;
+    transition: transform 0.2s ease, fill 0.3s ease;
+}
+
+.execom-section .social-icons a svg:hover {
+    transform: scale(1.2);
+    fill: #555;
+}
+
+.execom-section .slider-container {
+    max-width: 1025px;
+    margin: 50px auto;
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    justify-content: center; /* Center cards */
+}
+
+.execom-section .card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    width: 250px; /* Default width for larger screens */
+    height: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(124, 123, 123, 0.18);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 10px; /* Space between cards */
+    flex-shrink: 0;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+@media (max-width: 768px) {
+    .execom-section .card {
+        width: calc(90% - 100px); /* Reduced width for mobile, leaving some margin */
+        height: auto; /* Adjust height automatically */
+        margin: 10px auto; /* Center the card with margin */
+    }
+}
+
+
+.execom-section .slick-prev,
+.execom-section .slick-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 0; /* Hides text */
+    position: absolute; /* Absolute positioning */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    z-index: 2; /* Ensure buttons are above cards */
+}
+
+.execom-section .slick-prev {
+    left: -50px; /* Adjust to position the button */
+}
+
+.execom-section .slick-next {
+    right: -50px; /* Adjust to position the button */
+}
