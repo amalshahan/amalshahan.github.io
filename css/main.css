@@ -1,7 +1,8 @@
  @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
- @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); 
+ @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Frank+Ruhl+Libre:wght@300..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
  /* General Styles */
  body {
      font-family: 'Roboto', sans-serif;
@@ -28,6 +29,9 @@
      position: fixed;
      width: 100vw;
      height: 100vh;
+     min-height: 100%;
+     min-width: 100%;
+     /* Ensure it covers the full screen */
      top: 0;
      left: 0;
      overflow: hidden;
@@ -35,6 +39,7 @@
      z-index: -1;
      /* Make sure it stays behind content */
  }
+
 
 
  /* .noiseBg {
@@ -273,11 +278,11 @@
  }
 
  .main_head {
-    font-family:  __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre","Playfair Display","PT Serif",serif;
-    font-weight: 100;
+     font-family: __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre", "Playfair Display", "PT Serif", serif;
+     font-weight: 100;
      font-size: 4rem;
-    /* font-family:  __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre","Playfair Display","PT Serif",serif; */
-    cursor:grab;
+     /* font-family:  __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre","Playfair Display","PT Serif",serif; */
+     cursor: grab;
 
  }
 
@@ -315,4 +320,3 @@
      font-size: 1.3rem;
      font-weight: 600;
  }
-

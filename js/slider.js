@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.slider-container').slick({
+    $('.execom-section .slider-container').slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -10,15 +10,48 @@ $(document).ready(function () {
         nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>',
         responsive: [
             {
-                breakpoint: 768,
+                breakpoint: 480,
                 settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '40px',
                     slidesToShow: 1
                 }
             },
             {
-                breakpoint: 1024,
+                breakpoint: 768,
                 settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '40px',
                     slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 2000,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 2500,
+                settings: {
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 4
                 }
             }
         ]
