@@ -271,12 +271,14 @@
      font-weight: 300;
 
  }
+
  .main_head {
-    font-family:  serif;
+    font-family:  __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre","Playfair Display","PT Serif",serif;
     font-weight: 100;
-    
-     /* font-family: __Raleway_28057e, __Raleway_Fallback_28057e; "Frank Ruhl Libre","Playfair Display",,"PT Serif",*/
      font-size: 4rem;
+    /* font-family:  __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre","Playfair Display","PT Serif",serif; */
+    cursor:grab;
+
  }
 
  header .btn {
