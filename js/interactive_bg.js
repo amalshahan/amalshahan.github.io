@@ -12,9 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(move);
     };
 
+    // Handle mouse movement
     window.addEventListener('mousemove', (event) => {
         tgX = event.clientX;
         tgY = event.clientY;
+    });
+
+    // Handle touch movement for mobile devices
+    window.addEventListener('touchmove', (event) => {
+        if (event.touches.length > 0) {
+            tgX = event.touches[0].clientX;
+            tgY = event.touches[0].clientY;
+        }
     });
 
     move();
