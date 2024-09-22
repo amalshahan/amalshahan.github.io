@@ -21,6 +21,7 @@
     border: 2px solid #252A2E;
     border-radius: 10ch;
     white-space: nowrap;
+    margin-bottom: 2px;
 }
 
 .tag-scroller.scrolling .tag-list {

@@ -59,6 +59,8 @@
     font-size: 14px;
     color: #000000;
     line-height: 1.47;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    /* Move transition here */
 }
 
 .last-info .footer-widget ul {
@@ -73,12 +75,18 @@
 .last-info .footer-widget ul li a {
     color: #000000;
     text-decoration: none;
-    transition: color 0.3s ease;
+    display: inline-block;
+    /* Ensure the scaling effect works properly */
 }
 
 .last-info .footer-widget ul li a:hover {
-    color: #ff5e14;
+    transform: scale(1.2);
+    /* Scale up */
+    color: rgb(0, 0, 0);
+    /* Keep the same color on hover */
 }
+
+/* =============Social Icons================== */
 
 /* Centered Social Icons */
 .last-info .social-icons {
@@ -87,40 +95,24 @@
 }
 
 .last-info .social-icons a {
-    color: #000000;
+    color: #292929;
+    /* Default color */
     margin: 0 10px;
     font-size: 25px;
-    transition: color 0.3s ease;
-}
-
-.last-info .social-icons a:hover {
-    color: #ff5e14;
-}
-
-/* Footer Menu and Credits */
-.last-info .footer-menu {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.last-info .footer-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.last-info .footer-menu ul li {
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
     display: inline-block;
-    margin-right: 20px;
 }
 
-.last-info .footer-menu ul li a {
-    color: #000000;
-    text-decoration: none;
+/* Hover effect */
+.last-info .social-icons a:hover {
+    transform: scale(1.5);
+    /* Scale up */
+    color: rgb(0, 0, 0);
 }
 
-.last-info .footer-menu ul li a:hover {
-    color: #ff5e14;
-}
+
+/* ======================================================= */
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -165,12 +157,5 @@
         font-size: 18px;
     }
 
-    .last-info .footer-menu ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
 
-    .last-info .footer-menu ul li a {
-        font-size: 14px;
-    }
 }

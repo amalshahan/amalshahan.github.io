@@ -263,7 +263,7 @@
 
  .home_p {
 
-     font-family: __Raleway_28057e, __Raleway_Fallback_28057e;
+     font-family: __Raleway_28057e, __Raleway_Fallback_28057e, "Frank Ruhl Libre", "Playfair Display", "PT Serif", serif;
 
 
      margin-left: auto;
@@ -273,7 +273,7 @@
 
      width: min(80vw, 647px);
      text-align: center;
-     font-weight: 300;
+     font-weight: 400;
 
  }
 
