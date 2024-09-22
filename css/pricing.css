@@ -30,7 +30,7 @@
 
 .pricing .cards {
     position: relative;
-    max-width: 1000px;
+    max-width: 900px;
 }
 
 .pricing .cards__inner {
@@ -59,6 +59,17 @@
     --hue: 165;
     --saturation: 82.26%;
     --lightness: 51.37%;
+}
+.pricing .cards__card:nth-child(1) {
+    flex: 1 1 100%; /* Full width */
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.pricing .cards__card:nth-child(4) {
+    flex: 1 1 100%; /* Full width */
+    max-width: 550px;
+    margin: 0 auto;
 }
 
 .pricing .card:nth-child(2) {
@@ -132,31 +143,5 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width: 768px) {
-    .pricing .cards__card:nth-child(2) {
-        order: -1; /* Move the IEEE card before the IEEE + CS and IEEE + RAS cards */
-    }
-}
 
-/* Media query for tablet view */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .pricing .cards__inner {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2.5em;
-    }
-
-    /* IEEE card should span full width on the top */
-    .pricing .cards__card:nth-child(2) {
-        order: -1; /* Move IEEE card to the top */
-        flex: 1 1 100%; /* Full width */
-    }
-
-    /* IEEE + CS and IEEE + RAS side by side in the bottom */
-    .pricing .cards__card:nth-child(1),
-    .pricing .cards__card:nth-child(3) {
-        order: 0; /* Place them after IEEE */
-        flex: 1 1 calc(50% - 1.25em); /* Each takes half width with gap */
-    }
-}
 
