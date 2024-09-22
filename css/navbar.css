@@ -13,20 +13,20 @@
     /* Smooth color transition */
 }
 
-.navbar-brand:hover {
-    color: #1d62ab;
-}
+/* .navbar-brand:hover {
+    
+} */
 
-/* Navbar Links */
 .nav-link {
     font-size: 1rem;
-    color: #020202;
-    transition: color 0.3s ease;
-    /* Smooth color transition */
+    color: #202020;
+    transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out,transform 0.2s ease-in-out; /* Add transitions for font size and weight */
 }
 
 .nav-link:hover {
-    color: #0056b3;
+    color: #000000;
+    transform: scale(1.1);
+    font-weight:800; /* Make the font bold on hover */
 }
 
 /* Navbar Toggler */

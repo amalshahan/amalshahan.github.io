@@ -2,6 +2,7 @@
     display: grid;
     gap: 1.5rem;
     mask: linear-gradient(90deg, #0000, #F5F5F5 15%, #F5F5F5 85%, #0000);
+    -webkit-mask: linear-gradient(90deg, #0000, #F5F5F5 15%, #F5F5F5 85%, #0000);
     overflow: hidden;
 }
 

@@ -20,10 +20,14 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(124, 123, 123, 0.18);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
     margin: 0 10px;
     /* Even margin on left and right */
     flex-shrink: 0;
+}
+
+.execom-section .card:hover { 
+transform: scale(1.04);
 }
 
 .execom-section .card-photo img {
@@ -64,7 +68,6 @@
 
 .execom-section .social-icons a svg:hover {
     transform: scale(1.2);
-    fill: #555;
 }
 
 .execom-section .slider-container {
