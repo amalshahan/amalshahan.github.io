@@ -1,56 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Share This Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+    <meta charset="UTF-8">
+    <title>CSS Grid: Bullet Journal</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Gochi+Hand|Rock+Salt|Special+Elite" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <style>
+       /* Root Variables */
+:root {
+    --bg-color: #222;
+    --text-color: #333;
+    --notebook-bg: #cc4b48;
+    --inner-bg: #fbfae8;
+    --border-color: #111;
+    --highlight-color: coral;
+    --shadow-color-1: rgba(208, 91, 88, 0.4);
+    --shadow-color-2: rgba(244, 68, 46, 0.5);
+    --shadow-color-3: #ff2a3199;
+    --highlight-bg: rgba(239, 184, 186, 0.3);
+    --savings-bg: rgba(239, 184, 186, 0.4);
+    --picture-bg: #f9f9f9;
+    --music-color: #e4572e;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: "Gochi Hand", sans-serif;
+    color: var(--text-color);
+}
+
+/* Main Layout */
+.main-content {
+    margin: 2em auto;
+}
+
+
+
+/* Update notebook size to accommodate increased height */
+.notebook {
+    max-width: 1200px;
+    min-width: 950px;
+    min-height: 2010px; /* Increased to match inner height */
+    margin: auto;
+    border-radius: 16px;
+    background: var(--notebook-bg);
+    padding: 2px 4px 2.5px;
+}
+/* Updated notebook inner height */
+.notebook__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 16px;
+    background: linear-gradient(90deg, var(--inner-bg) 15px, transparent 1%) center,
+                linear-gradient(var(--inner-bg) 15px, transparent 1%) center,
+                #794949;
+    background-size: 16px 16px;
+    display: grid;
+    padding: 30px 20px 25px;
+    grid-template-areas:
+        "section1"
+        "section2"
+        "section3";
+    grid-template-rows: 660px 670px 670px; /* Increased from 570px */
+    gap: 0;
+    min-height: 2200px; /* Increased from 1710px */
+}
+
+
+/* Section 1 */
+.section1 {
+    grid-area: section1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 670px;
+
+}
+
+.section1 h1 {
+    font-size: 72px;
+    line-height: 1;
+    font-family: "Lobster", cursive;
+    text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
+}
+
+.section1 h3 {
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: "Rock Salt", cursive;
+    margin: 12px 0;
+}
+
+.music__artist {
+    font-size: 32px;
+    font-family: "Gochi Hand", cursive;
+    color: var(--music-color);
+    transform: rotate(-10deg);
+    margin-bottom: 20px;
+}
+
+/* Section 2 */
+.section2 {
+    grid-area: section2;
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "content content content"
+        "days days days";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Content Area */
+.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.content-row {
+    display: flex;
+    gap: 30px;
+    height: 100%;
+}
+
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Description Section */
+.desc {
+    flex: 1;
+    border: 2px solid var(--border-color);
+    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
+    border-width: 0 2px 2px;
+    position: relative;
+}
+
+.desc span {
+    display: block;
+    margin: -25px 22px;
+    font-size: 28px;
+    font-family: "Lobster", cursive;
+    text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
+}
+
+.desc span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: var(--border-color);
+    background: linear-gradient(to right, var(--border-color) 15px, transparent 15px, transparent 150px, var(--border-color) 95px);
+}
+
+.desc__list {
+    margin-top: 30px;
+    padding: 20px;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+/* Notes Section */
+.notes {
+    flex: 1;
+    border: 2px solid var(--border-color);
+    border-width: 0 2px 2px;
+    position: relative;
+    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
+}
+
+.notes span {
+    display: block;
+    margin: -25px 22px;
+    font-size: 28px;
+    font-family: "Lobster", cursive;
+    text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
+}
+
+.notes span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: var(--border-color);
+    background: linear-gradient(to right, var(--border-color) 15px, transparent 15px, transparent 160px, var(--border-color) 95px);
+}
+
+.notes__list {
+    margin-top: 30px;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.notes__list h4 {
+    font-family: "Rock Salt", cursive;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--music-color);
+}
+
+.notes__list ol {
+    list-style-type: decimal;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.notes__list li {
+    margin-bottom: 10px;
+}
+
+
+/* New Board Example Table styles */
+.board-example {
+    font-family: "Special Elite", cursive;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 20px;
+    background: var(--highlight-bg);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin: 20px 0;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+    margin: 15px 0;
+}
+
+.board-table td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    font-family: "Special Elite", cursive;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.board-table td.marked {
+    background: var(--notebook-bg);
+    color: var(--inner-bg);
+}
+
+
+
+/* Goals Section */
+.goals {
+    flex: 1;
+    border: 2px solid var(--border-color);
+    border-width: 0 2px 2px;
+    position: relative;
+    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
+}
+
+.goals > span:nth-child(1) {
+    position: absolute;
+    text-transform: uppercase;
+    font: 700 12px "Rock Salt", cursive;
+    top: -30px;
+    transform: rotate(-15deg);
+}
+
+.goals > span:nth-child(2) {
+    display: block;
+    margin: -25px 22px;
+    font: 28px "Lobster", cursive;
+    text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
+}
+
+.goals > span:nth-child(2):before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: var(--border-color);
+    background: linear-gradient(to right, var(--border-color) 15px, transparent 15px, transparent 115px, var(--border-color) 95px);
+}
+
+.goals__inner {
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.goals__item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.goals__item__checkbox {
+    border: 2px solid var(--border-color);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    position: relative;
+}
+
+.goals__item__checkbox span {
+    font-size: 16px;
+    color: var(--notebook-bg);
+}
+
+.goals__item__desc {
+    font-size: 16px;
+    font-family: "Gochi Hand", cursive;
+}
+
+/* Days Section */
+.days {
+    grid-area: days;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+    padding: 0 40px;
+}
+
+.days__item {
+    border: 2px solid var(--border-color);
+    position: relative;
+    min-height: 100px;
+}
+
+.days__item:nth-child(1) { box-shadow: 3px 3px 0 0 var(--shadow-color-1); }
+.days__item:nth-child(2) { box-shadow: 3px 3px 0 0 var(--shadow-color-2); }
+.days__item:nth-child(3) { box-shadow: 3px 3px 0 0 var(--shadow-color-3); }
+
+.days__day {
+    padding: 10px;
+    font-size: 18px;
+    font-family: "Special Elite", cursive;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.highlighted {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.highlighted .text {
+    position: relative;
+    font-size: 16px;
+}
+
+.highlighted .text span {
+    position: relative;
+    z-index: 2;
+}
+
+.highlighted .text:after {
+    content: "";
+    background: var(--highlight-bg);
+    width: 95%;
+    height: 100%;
+    position: absolute;
+    left: 2px;
+    top: 0;
+    z-index: 1;
+    transform: rotate(-3deg);
+}
+.section3 {
+    grid-area: section3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: auto; /* Allow flexible height */
+    min-height: 670px; /* Maintain existing design consistency */
+}
+
+
+.picture {
+    position: relative;
+    width: 250px;
+    margin: 150px auto 10px; /* Center and space below */
+    z-index: 1;
+}
+
+.picture__border {
+    width: 100%;
+    background: var(--picture-bg);
+    padding: 15px;
+    transform: rotate(5deg);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.picture__border:after {
+    content: "";
+    width: 55%;
+    height: 20px;
+    top: -10px;
+    z-index: 5;
+    left: 25%;
+    transform: rotate(-2deg);
+    position: absolute;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: rgba(220, 220, 220, 0.4);
+}
+
+.picture__border img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border-color);
+}
+
+.picture__border figcaption {
+    margin-top: 12px;
+    text-align: center;
+    font: 16px "Gochi Hand", cursive;
+    color: var(--music-color);
+    line-height: 1.4;
+}
+
+/* Footer - Updated position */
+.footer {
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Push to bottom */
+    padding: 20px 0;
+}
+
+.footer a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
+}
+
+.footer a .icons {
+    font-size: 20px;
+}
+/* Go Button */
+.go-button {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-family: "Lobster", cursive;
+    font-size: 20px;
+    background: var(--inner-bg);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--shadow-color-1);
+    transition: all 0.3s ease;
+}
+
+.go-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--shadow-color-2);
+}
+
+
+/* Responsive CSS Update */
+@media (max-width: 1200px) {
+    .notebook {
+        max-width: 90%;
+        min-width: 750px;
+        padding: 10px;
     }
-    button {
-      background-color: #008cba;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
+
+    .section1 h1 {
+        font-size: 48px;
     }
-    button:hover {
-      background-color: #005f73;
+
+    .section1 h3 {
+        font-size: 12px;
     }
-  </style>
+
+    .content-row {
+        flex-direction: column;
+    }
+
+    .left-column, .notes {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .notebook {
+        max-width: 100%;
+        min-width: 100%;
+        padding: 5px;
+    }
+
+    .section1 h1 {
+        font-size: 30px;
+    }
+
+    .section1 h3 {
+        font-size: 10px;
+    }
+
+    .days {
+        grid-template-columns: 1fr;
+    }
+
+    .days__item {
+        margin-bottom: 20px;
+    }
+
+    .picture {
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section1 {
+        padding: 10px;
+    }
+
+    .content-row {
+        gap: 10px;
+    }
+
+    .board-example {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .board-table td {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .picture__border {
+        padding: 10px;
+    }
+
+    .footer a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.notebook__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.days {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+
+    </style>
 </head>
+
 <body>
+    <div class="main-content">
+        <div class="notebook">
+            <div class="notebook__inner">
+                <!-- Section 1 remains the same -->
+                <div class="section1">
+                    <div class="music__artist">have-fun.</div>
+                    <h1
+                        style="font: 90px/1 'Lobster', cursive; text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);">
+                        Indian-Bingo</h1>
+                    <h3 style="font: 13px/1.2 'Rock Salt', cursive; margin: 8px;">its just a simple game!</h3>
+                    <button class="go-button">let's play</button>
+                </div>
 
-  <h1>Welcome to Our Game!</h1>
-  <p>Click the button below to share this page with your friends!</p>
+                <!-- Updated Section 2 with new layout -->
+                <div class="section2">
 
-  <button id="shareButton">Share</button>
 
-  <script>
-    document.getElementById('shareButton').addEventListener('click', async () => {
-      const shareData = {
-        title: 'Let\'s Play!',
-        text: 'Join me here: Let\'s Play!',
-        url: window.location.href
-      };
+                    <div class="content">
+                        <div class="content-row">
+                            <div class="left-column">
+                                <div class="desc">
+                                    <span>description</span>
+                                    <div class="desc__list">
+                                        <p>Welcome to Indian Bingo, a thrilling two-player game that combines strategy
+                                            with luck! This classic game has been enjoyed for generations and now comes
+                                            with a modern twist. Choose your difficulty level and challenge either the
+                                            computer or a friend to an exciting match of number hunting and pattern
+                                            forming.</p>
+                                        <br>
+                                        <p>Whether you're a beginner trying the easy mode or a seasoned player ready for
+                                            the hard challenge, there's something for everyone. Track your progress,
+                                            earn points, and aim for that satisfying "BINGO" moment!</p>
+                                    </div>
+                                </div>
+                                <div class="goals">
+                                    <span>future</span>
+                                    <span>updates</span>
+                                    <div class="goals__inner">
+                                        <div class="goals__list">
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"><span>✔</span></div>
+                                                <div class="goals__item__desc">One Codepen</div>
+                                            </div>
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"></div>
+                                                <div class="goals__item__desc">One Blog Post</div>
+                                            </div>
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"></div>
+                                                <div class="goals__item__desc">One Illustration</div>
+                                            </div>
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"><span>✔</span></div>
+                                                <div class="goals__item__desc">One Codepen</div>
+                                            </div>
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"></div>
+                                                <div class="goals__item__desc">One Blog Post</div>
+                                            </div>
+                                            <div class="goals__item">
+                                                <div class="goals__item__checkbox"></div>
+                                                <div class="goals__item__desc">One Illustration</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notes">
+                                <span>how-to-play</span>
+                                <div class="notes__list">
+                                    <h4>this is a 2-Player Game</h4>
+                                    <ol>
+                                        <li>Each player has a 5x5 board with numbers 1-25, randomly placed</li>
+                                        <li>Keep your board hidden during gameplay</li>
+                                        <li>Player1 picks an unmarked number - both players mark it</li>
+                                        <li>Player2 picks an unmarked number - both players mark it</li>
+                                        <li>Get points by completing rows, columns, or diagonals</li>
+                                        <li>First to score 5 points (B I N G O) wins!</li>
+                                    </ol>
+                                    <div class="board-example">Example Board:
+                                        <table class="board-table">
+                                            <tr>
+                                                <td class="marked">█</td>
+                                                <td class="marked">█</td>
+                                                <td class="marked">█</td>
+                                                <td class="marked">█</td>
+                                                <td class="marked">█</td>
+                                            </tr>
+                                            <tr>
+                                                <td>13</td>
+                                                <td>15</td>
+                                                <td>20</td>
+                                                <td class="marked">█</td>
+                                                <td class="marked">█</td>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td>12</td>
+                                                <td class="marked">█</td>
+                                                <td>14</td>
+                                                <td class="marked">█</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16</td>
+                                                <td class="marked">█</td>
+                                                <td>18</td>
+                                                <td>19</td>
+                                                <td class="marked">█</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="marked">█</td>
+                                                <td>22</td>
+                                                <td>23</td>
+                                                <td>24</td>
+                                                <td class="marked">█</td>
+                                            </tr>
+                                        </table>
+                                        This board scores: B I N (3 points)<br>
+                                        1 row + 1 column + 1 diagonal
+                                    </div>
+                                </div>
 
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-          alert('Thanks for sharing!');
-        } else {
-          alert('Share feature not supported in this browser.');
-        }
-      } catch (error) {
-        console.error('Error sharing:', error);
-      }
-    });
-  </script>
 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="days">
+                        <div class="days__item">
+                            <div class="days__day">Easy mode</div>
+                            <div class="days__list">
+                                <div class="highlighted">
+                                    <div class="text"><span>computer choose random numbers</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="days__item">
+                            <div class="days__day">Medium mode</div>
+                            <div class="days__list">
+                                <div class="highlighted">
+                                    <div class="text"><span>computer just plays like you</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="days__item">
+                            <div class="days__day">Hard mode</div>
+                            <div class="days__list">
+                                
+                                <div class="highlighted">
+                                    <div class="text"><span>You will never win!</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Section 3 remains the same -->
+                <div class="section3">
+                    <div class="picture">
+                        <div class="picture__border">
+                            <img src="./me.jpg">
+                            <figcaption>Saleem Malik,<br>with ♥</figcaption>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <a href="https://twitter.com/" target="_blank"><i class="icon-social-twitter icons"></i></a>
+                        <a href="https://github.com/malik-l0l" target="_blank"><i
+                                class="icon-social-github icons"></i></a>
+                        <a href="https://www.linkedin.com/in/saleem-malik-pv/" target="_blank"><i
+                                class="icon-social-linkedin icons"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
