@@ -10,7 +10,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <style>
-       /* Root Variables */
+/* Root Variables */
 :root {
     --bg-color: #222;
     --text-color: #333;
@@ -43,19 +43,16 @@ body {
     margin: 2em auto;
 }
 
-
-
-/* Update notebook size to accommodate increased height */
 .notebook {
     max-width: 1200px;
     min-width: 950px;
-    min-height: 2010px; /* Increased to match inner height */
+    min-height: 2010px;
     margin: auto;
     border-radius: 16px;
     background: var(--notebook-bg);
     padding: 2px 4px 2.5px;
 }
-/* Updated notebook inner height */
+
 .notebook__inner {
     width: 100%;
     height: 100%;
@@ -71,11 +68,10 @@ body {
         "section1"
         "section2"
         "section3";
-    grid-template-rows: 660px 670px 670px; /* Increased from 570px */
+    grid-template-rows: 660px 670px 670px;
     gap: 0;
-    min-height: 2200px; /* Increased from 1710px */
+    min-height: 2200px;
 }
-
 
 /* Section 1 */
 .section1 {
@@ -85,25 +81,24 @@ body {
     align-items: center;
     justify-content: center;
     height: 670px;
-
 }
 
 .section1 h1 {
-    font-size: 72px;
+    font-size: clamp(48px, 6vw, 72px);
     line-height: 1;
     font-family: "Lobster", cursive;
     text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
 }
 
 .section1 h3 {
-    font-size: 16px;
+    font-size: clamp(12px, 1.5vw, 16px);
     line-height: 1.2;
     font-family: "Rock Salt", cursive;
     margin: 12px 0;
 }
 
 .music__artist {
-    font-size: 32px;
+    font-size: clamp(24px, 3vw, 32px);
     font-family: "Gochi Hand", cursive;
     color: var(--music-color);
     transform: rotate(-10deg);
@@ -157,7 +152,7 @@ body {
 .desc span {
     display: block;
     margin: -25px 22px;
-    font-size: 28px;
+    font-size: clamp(24px, 2.8vw, 28px);
     font-family: "Lobster", cursive;
     text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
 }
@@ -177,7 +172,7 @@ body {
     margin-top: 30px;
     padding: 20px;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
 }
 
 /* Notes Section */
@@ -192,7 +187,7 @@ body {
 .notes span {
     display: block;
     margin: -25px 22px;
-    font-size: 28px;
+    font-size: clamp(24px, 2.8vw, 28px);
     font-family: "Lobster", cursive;
     text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
 }
@@ -216,7 +211,7 @@ body {
 
 .notes__list h4 {
     font-family: "Rock Salt", cursive;
-    font-size: 18px;
+    font-size: clamp(16px, 1.8vw, 18px);
     margin-bottom: 15px;
     color: var(--music-color);
 }
@@ -225,18 +220,17 @@ body {
     list-style-type: decimal;
     margin-left: 25px;
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .notes__list li {
     margin-bottom: 10px;
 }
 
-
-/* New Board Example Table styles */
+/* Board Example */
 .board-example {
     font-family: "Special Elite", cursive;
-    font-size: 15px;
+    font-size: clamp(13px, 1.4vw, 15px);
     line-height: 1.6;
     padding: 20px;
     background: var(--highlight-bg);
@@ -255,13 +249,13 @@ body {
 }
 
 .board-table td {
-    width: 40px;
-    height: 40px;
+    width: clamp(30px, 4vw, 40px);
+    height: clamp(30px, 4vw, 40px);
     text-align: center;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 4px;
     font-family: "Special Elite", cursive;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
     padding: 8px;
 }
 
@@ -269,8 +263,6 @@ body {
     background: var(--notebook-bg);
     color: var(--inner-bg);
 }
-
-
 
 /* Goals Section */
 .goals {
@@ -284,7 +276,7 @@ body {
 .goals > span:nth-child(1) {
     position: absolute;
     text-transform: uppercase;
-    font: 700 12px "Rock Salt", cursive;
+    font: 700 clamp(10px, 1.2vw, 12px) "Rock Salt", cursive;
     top: -30px;
     transform: rotate(-15deg);
 }
@@ -292,7 +284,7 @@ body {
 .goals > span:nth-child(2) {
     display: block;
     margin: -25px 22px;
-    font: 28px "Lobster", cursive;
+    font: clamp(24px, 2.8vw, 28px) "Lobster", cursive;
     text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);
 }
 
@@ -335,8 +327,7 @@ body {
 }
 
 .goals__item__desc {
-    font-size: 16px;
-    font-family: "Gochi Hand", cursive;
+    font-size: clamp(14px, 1.5vw, 16px);
 }
 
 /* Days Section */
@@ -361,7 +352,7 @@ body {
 
 .days__day {
     padding: 10px;
-    font-size: 18px;
+    font-size: clamp(16px, 1.8vw, 18px);
     font-family: "Special Elite", cursive;
     border-bottom: 2px solid var(--border-color);
 }
@@ -375,7 +366,7 @@ body {
 
 .highlighted .text {
     position: relative;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .highlighted .text span {
@@ -394,6 +385,8 @@ body {
     z-index: 1;
     transform: rotate(-3deg);
 }
+
+/* Section 3 */
 .section3 {
     grid-area: section3;
     display: flex;
@@ -401,15 +394,15 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    height: auto; /* Allow flexible height */
-    min-height: 670px; /* Maintain existing design consistency */
+    height: auto;
+    min-height: 670px;
 }
 
-
+/* Picture Section */
 .picture {
     position: relative;
     width: 250px;
-    margin: 150px auto 10px; /* Center and space below */
+    margin: 150px auto 10px;
     z-index: 1;
 }
 
@@ -419,7 +412,9 @@ body {
     padding: 15px;
     transform: rotate(5deg);
     position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 3px var(--shadow-color-2);
+    /* box-shadow: 3px 3px 0 0 ; */
+
 }
 
 .picture__border:after {
@@ -445,49 +440,18 @@ body {
 .picture__border figcaption {
     margin-top: 12px;
     text-align: center;
-    font: 16px "Gochi Hand", cursive;
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-family: "Gochi Hand", cursive;
     color: var(--music-color);
     line-height: 1.4;
 }
 
-/* Footer - Updated position */
-.footer {
-    text-align: center;
-    width: 100%;
-    margin-top: auto; /* Push to bottom */
-    padding: 20px 0;
-}
-
-.footer a {
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1px dashed var(--border-color);
-    color: var(--text-color);
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-.footer a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
-}
-
-.footer a .icons {
-    font-size: 20px;
-}
 /* Go Button */
 .go-button {
     margin-top: 20px;
     padding: 10px 30px;
     font-family: "Lobster", cursive;
-    font-size: 20px;
+    font-size: clamp(18px, 2vw, 20px);
     background: var(--inner-bg);
     border: none;
     border-radius: 25px;
@@ -501,21 +465,77 @@ body {
     box-shadow: 4px 4px 0 0 var(--shadow-color-2);
 }
 
+/* Footer */
+.footer {
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 0;
+}
 
-/* Responsive CSS Update */
+/* Footer continued */
+.footer a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(35px, 4vw, 45px);
+    height: clamp(35px, 4vw, 45px);
+    border-radius: 50%;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 3px var(--shadow-color-2);
+
+}
+
+.footer a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 0 var(--shadow-color-2);
+}
+
+.footer a .icons {
+    font-size: clamp(16px, 2vw, 20px);
+
+}
+
+/* Notebook Inner Layout */
+.notebook__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+.share-icon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 27px;
+    height: 27px;
+    z-index: 10;
+    filter: invert(42%) sepia(85%) saturate(1640%) hue-rotate(341deg) brightness(99%) contrast(89%); /* This will make it match var(--music-color) which is #e4572e */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.share-icon:hover {
+    transform: scale(1.1);
+}
+/* Days Grid */
+.days {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Responsive Design */
 @media (max-width: 1200px) {
     .notebook {
         max-width: 90%;
         min-width: 750px;
         padding: 10px;
-    }
-
-    .section1 h1 {
-        font-size: 48px;
-    }
-
-    .section1 h3 {
-        font-size: 12px;
     }
 
     .content-row {
@@ -534,14 +554,6 @@ body {
         padding: 5px;
     }
 
-    .section1 h1 {
-        font-size: 30px;
-    }
-
-    .section1 h3 {
-        font-size: 10px;
-    }
-
     .days {
         grid-template-columns: 1fr;
     }
@@ -549,13 +561,24 @@ body {
     .days__item {
         margin-bottom: 20px;
     }
-
+    .notes{
+        margin-top: 15px;
+    }
     .picture {
-        width: 200px;
+        width: clamp(150px, 30vw, 200px);
+    }
+
+    .content-row {
+        flex-direction: column;
+        gap: 20px;
     }
 }
 
 @media (max-width: 576px) {
+    .notebook__inner {
+        padding: 15px 10px;
+    }
+
     .section1 {
         padding: 10px;
     }
@@ -565,36 +588,48 @@ body {
     }
 
     .board-example {
-        font-size: 12px;
         padding: 10px;
     }
 
     .board-table td {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
+        padding: 4px;
     }
 
-    .picture__border {
-        padding: 10px;
+    .days__day {
+        padding: 8px;
     }
 
     .footer a {
         width: 35px;
         height: 35px;
     }
+
+    .picture__border {
+        padding: 10px;
+    }
+
+    .goals__inner {
+        padding: 0 10px;
+    }
+    .notes{
+        margin-top: 20px;
+    }
+    .desc__list, .notes__list {
+        padding: 15px;
+    }
 }
 
-.notebook__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+/* Print Styles */
+@media print {
+    .notebook {
+        box-shadow: none;
+    }
 
-.days {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .go-button,
+    .footer {
+        display: none;
+    }
 }
-
 
     </style>
 </head>
@@ -604,11 +639,10 @@ body {
         <div class="notebook">
             <div class="notebook__inner">
                 <!-- Section 1 remains the same -->
+                <img src="./share.svg" class="share-icon" alt="Share">
                 <div class="section1">
                     <div class="music__artist">have-fun.</div>
-                    <h1
-                        style="font: 90px/1 'Lobster', cursive; text-shadow: 2px 1px 0 var(--inner-bg), 5px 4px 0 var(--highlight-color);">
-                        Indian-Bingo</h1>
+                    <h1>Indian-Bingo</h1>
                     <h3 style="font: 13px/1.2 'Rock Salt', cursive; margin: 8px;">its just a simple game!</h3>
                     <button class="go-button">let's play</button>
                 </div>
